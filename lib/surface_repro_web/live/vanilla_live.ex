@@ -1,4 +1,4 @@
-defmodule SurfaceReproWeb.PageVanillaLive do
+defmodule SurfaceReproWeb.VanillaLive do
   use SurfaceReproWeb, :live_view
 
   @impl true
@@ -20,7 +20,11 @@ defmodule SurfaceReproWeb.PageVanillaLive do
       {:company, "Company"}
     ]) %>
 
-    <a class="block mt-16" href="/">Surface example</a>
+    <p class="font-bold text-lg mt-16">Viewing: Vanilla LiveView example</p>
+    <a class="block underline" href="/">Surface example</a>
+    <a class="block underline" href="/without-named-slottable">Surface example without named slottable</a>
+
+    <p class="mt-16">Directions: Open websocket inspector and note which static vs dynamic bits are sent when you change the tab.</p>
     """
   end
 end
