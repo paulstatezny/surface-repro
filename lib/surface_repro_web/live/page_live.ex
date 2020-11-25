@@ -1,39 +1,28 @@
 defmodule SurfaceReproWeb.PageLive do
   use SurfaceReproWeb, :live_view
 
+  alias SurfaceReproWeb.{Tabs, Tabs.Tab}
+
+  prop tab, :atom
+
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+  def mount(_params, _session, socket),
+    do: {:ok, assign(socket, tab: :account)}
+
+  @impl true
+  def handle_event("tab_changed", %{"key" => key}, socket) do
+    {:noreply, assign(socket, tab: String.to_existing_atom(key))}
   end
 
   @impl true
-  def handle_event("suggest", %{"q" => query}, socket) do
-    {:noreply, assign(socket, results: search(query), query: query)}
-  end
-
-  @impl true
-  def handle_event("search", %{"q" => query}, socket) do
-    case search(query) do
-      %{^query => vsn} ->
-        {:noreply, redirect(socket, external: "https://hexdocs.pm/#{query}/#{vsn}")}
-
-      _ ->
-        {:noreply,
-         socket
-         |> put_flash(:error, "No dependencies found matching \"#{query}\"")
-         |> assign(results: %{}, query: query)}
-    end
-  end
-
-  defp search(query) do
-    if not SurfaceReproWeb.Endpoint.config(:code_reloader) do
-      raise "action disabled when not in development"
-    end
-
-    for {app, desc, vsn} <- Application.started_applications(),
-        app = to_string(app),
-        String.starts_with?(app, query) and not List.starts_with?(desc, ~c"ERTS"),
-        into: %{},
-        do: {app, vsn}
+  def render(assigns) do
+    ~H"""
+    <Tabs selected={{ @tab }} click="tab_changed">
+      <Tab key={{ :account }} label="My Account" />
+      <Tab key={{ :team }} label="My Team" />
+      <Tab key={{ :billing }} label="Billing" />
+      <Tab key={{ :company }} label="Company" />
+    </Tabs>
+    """
   end
 end
