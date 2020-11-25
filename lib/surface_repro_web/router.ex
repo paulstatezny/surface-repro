@@ -18,6 +18,7 @@ defmodule SurfaceReproWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/vanilla", PageVanillaLive, :index
   end
 
   # Other scopes may use custom stacks.

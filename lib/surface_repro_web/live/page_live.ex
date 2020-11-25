@@ -1,5 +1,5 @@
 defmodule SurfaceReproWeb.PageLive do
-  use SurfaceReproWeb, :live_view
+  use SurfaceReproWeb, :surface_live_view
 
   alias SurfaceReproWeb.{Tabs, Tabs.Tab}
 
@@ -23,6 +23,8 @@ defmodule SurfaceReproWeb.PageLive do
       <Tab key={{ :billing }} label="Billing" />
       <Tab key={{ :company }} label="Company" />
     </Tabs>
+
+    <a class="block mt-16" href="/vanilla">Vanilla LiveView example</a>
     """
   end
 end

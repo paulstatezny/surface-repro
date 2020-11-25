@@ -44,6 +44,15 @@ defmodule SurfaceReproWeb do
 
   def live_view do
     quote do
+      use Phoenix.LiveView,
+        layout: {SurfaceReproWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
+  def surface_live_view do
+    quote do
       use Surface.LiveView,
         layout: {SurfaceReproWeb.LayoutView, "live.html"}
 
