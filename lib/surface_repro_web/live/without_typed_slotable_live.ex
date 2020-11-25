@@ -1,9 +1,9 @@
-defmodule SurfaceReproWeb.WithoutNamedSlottableLive do
+defmodule SurfaceReproWeb.WithoutTypedSlotableLive do
   use SurfaceReproWeb, :surface_live_view
 
   alias SurfaceReproWeb.{
-    TabsWithoutNamedSlottable,
-    TabsWithoutNamedSlottable.Tab
+    TabsWithoutTypedSlotable,
+    TabsWithoutTypedSlotable.Tab
   }
 
   prop tab, :atom
@@ -20,14 +20,14 @@ defmodule SurfaceReproWeb.WithoutNamedSlottableLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <TabsWithoutNamedSlottable>
+    <TabsWithoutTypedSlotable>
       <Tab click="tab_changed" selected={{ @tab == :account }} key={{ :account }} label="My Account" />
       <Tab click="tab_changed" selected={{ @tab == :team }} key={{ :team }} label="My Team" />
       <Tab click="tab_changed" selected={{ @tab == :billing }} key={{ :billing }} label="Billing" />
       <Tab click="tab_changed" selected={{ @tab == :company }} key={{ :company }} label="Company" />
-    </TabsWithoutNamedSlottable>
+    </TabsWithoutTypedSlotable>
 
-    <p class="font-bold text-lg mt-16">Viewing: Example without named slottable</p>
+    <p class="font-bold text-lg mt-16">Viewing: Surface example without typed slotables</p>
     <a class="block underline" href="/vanilla">Vanilla LiveView example</a>
     <a class="block underline" href="/">Surface example</a>
 

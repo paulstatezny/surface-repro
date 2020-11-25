@@ -1,4 +1,4 @@
-defmodule SurfaceReproWeb.TabsWithoutNamedSlottable do
+defmodule SurfaceReproWeb.TabsWithoutTypedSlotable do
   use Surface.Component
 
   defmodule Tab do

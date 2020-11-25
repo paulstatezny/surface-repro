@@ -19,7 +19,7 @@ defmodule SurfaceReproWeb.Router do
 
     live "/", SurfaceLive, :index
     live "/vanilla", VanillaLive, :index
-    live "/without-named-slottable", WithoutNamedSlottableLive, :index
+    live "/without-typed-slotable", WithoutTypedSlotableLive, :index
   end
 
   # Other scopes may use custom stacks.

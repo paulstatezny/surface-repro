@@ -26,7 +26,7 @@ defmodule SurfaceReproWeb.SurfaceLive do
 
     <p class="font-bold text-lg mt-16">Viewing: Surface example</p>
     <a class="block underline" href="/vanilla">Vanilla LiveView example</a>
-    <a class="block underline" href="/without-named-slottable">Surface example without named slottable</a>
+    <a class="block underline" href="/without-typed-slotable">Surface example without typed slotables</a>
 
     <p class="mt-16">Directions: Open websocket inspector and note which static vs dynamic bits are sent when you change the tab.</p>
     """
