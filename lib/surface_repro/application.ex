@@ -8,7 +8,7 @@ defmodule SurfaceRepro.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      SurfaceRepro.Repo,
+      #SurfaceRepro.Repo,
       # Start the Telemetry supervisor
       SurfaceReproWeb.Telemetry,
       # Start the PubSub system
