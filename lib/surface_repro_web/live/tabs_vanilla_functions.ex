@@ -1,7 +1,19 @@
-defmodule SurfaceReproWeb.Tab do
-  use Phoenix.LiveComponent
+defmodule SurfaceReproWeb.TabsVanillaFunctions do
+  import Phoenix.LiveView.Helpers, only: [sigil_L: 2]
 
   def render(assigns) do
+    ~L"""
+    <div class="border-b border-gray-200">
+      <nav class="flex -mb-px">
+        <%= for {key, label} <- @tabs do %>
+          <%= tab(%{click: @click, key: key, label: label, selected: @selected}) %>
+        <% end %>
+      </nav>
+    </div>
+    """
+  end
+
+  defp tab(assigns) do
     ~L"""
     <button type="button" phx-click="<%= @click %>" phx-value-key="<%= @key %>" class="<%= class(@selected == @key) %>">
       <span><%= @label %></span>
@@ -15,20 +27,4 @@ defmodule SurfaceReproWeb.Tab do
 
   defp class(false = _selected),
     do: @base_classes <> "text-gray-500 border-transparent hover:border-gray-300"
-end
-
-defmodule SurfaceReproWeb.TabsVanilla do
-  use Phoenix.LiveComponent
-
-  def render(assigns) do
-    ~L"""
-    <div class="border-b border-gray-200">
-      <nav class="flex -mb-px">
-        <%= for {key, label} <- @tabs do %>
-          <%= live_component(@socket, SurfaceReproWeb.Tab, click: @click, key: key, label: label, selected: @selected) %>
-        <% end %>
-      </nav>
-    </div>
-    """
-  end
 end

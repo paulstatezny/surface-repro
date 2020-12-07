@@ -27,9 +27,10 @@ defmodule SurfaceReproWeb.WithoutTypedSlotableLive do
       <Tab click="tab_changed" selected={{ @tab == :company }} key={{ :company }} label="Company" />
     </TabsWithoutTypedSlotable>
 
-    <p class="font-bold text-lg mt-16">Viewing: Surface example without typed slotables</p>
+    <a class="block underline mt-16" href="/">Surface example</a>
+    <p class="font-bold text-lg">Viewing: Surface example without typed slotables</p>
     <a class="block underline" href="/vanilla">Vanilla LiveView example</a>
-    <a class="block underline" href="/">Surface example</a>
+    <a class="block underline" href="/vanilla-functions">Vanilla LiveView with Functions (no components)</a>
 
     <p class="mt-16">Directions: Open websocket inspector and note which static vs dynamic bits are sent when you change the tab.</p>
     """

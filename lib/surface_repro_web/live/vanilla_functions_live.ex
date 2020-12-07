@@ -1,5 +1,7 @@
-defmodule SurfaceReproWeb.VanillaLive do
+defmodule SurfaceReproWeb.VanillaFunctionsLive do
   use SurfaceReproWeb, :live_view
+
+  alias SurfaceReproWeb.TabsVanillaFunctions
 
   @impl true
   def mount(_params, _session, socket),
@@ -13,17 +15,17 @@ defmodule SurfaceReproWeb.VanillaLive do
   @impl true
   def render(assigns) do
     ~L"""
-    <%= live_component(@socket, SurfaceReproWeb.TabsVanilla, click: "tab_changed", selected: @tab, tabs: [
+    <%= TabsVanillaFunctions.render(%{click: "tab_changed", selected: @tab, tabs: [
       {:account, "My Account"},
       {:team, "My Team"},
       {:billing, "Billing"},
       {:company, "Company"}
-    ]) %>
+    ]}) %>
 
     <a class="block underline mt-16" href="/">Surface example</a>
     <a class="block underline" href="/without-typed-slotable">Surface example without typed slotables</a>
-    <p class="font-bold text-lg">Viewing: Vanilla LiveView example</p>
-    <a class="block underline" href="/vanilla-functions">Vanilla LiveView with Functions (no components)</a>
+    <a class="block underline" href="/vanilla">Vanilla LiveView example</a>
+    <p class="font-bold text-lg">Viewing: Vanilla LiveView with Functions (no components)</p>
 
     <p class="mt-16">Directions: Open websocket inspector and note which static vs dynamic bits are sent when you change the tab.</p>
     """

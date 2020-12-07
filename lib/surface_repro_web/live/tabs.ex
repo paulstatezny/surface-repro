@@ -9,7 +9,7 @@ defmodule SurfaceReproWeb.Tabs do
   end
 
   defmodule InternalTab do
-    use Surface.Component
+    use Surface.LiveComponent
 
     prop key, :atom, required: true
     prop label, :string, required: true
@@ -40,6 +40,7 @@ defmodule SurfaceReproWeb.Tabs do
       <nav class="flex -mb-px">
         <InternalTab
           :for={{ tab <- @tabs }}
+          id={{ tab.key }}
           click={{ @click }}
           key={{ tab.key }}
           label={{ tab.label }}
